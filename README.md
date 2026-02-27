@@ -1,9 +1,5 @@
 # Ghost Tag (ghosttag)
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/auroraund/ghost-tag/main/icon.png" width="128" height="128" alt="Ghost Tag Icon">
-</p>
-
 A smart, bi-directional auto rename tag extension for VS Code. Invisible, fast, and indispensable—just like a ghost.
 
 ## Features
