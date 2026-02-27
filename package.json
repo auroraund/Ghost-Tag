@@ -1,0 +1,41 @@
+{
+  "name": "ghosttag",
+  "displayName": "Ghost Tag",
+  "description": "Smart, bi-directional auto rename tag extension. Invisible, fast, and indispensable.",
+  "version": "1.0.0",
+  "publisher": "nurohive",
+  "author": "auroraund",
+  "license": "MIT",
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "html",
+    "xml",
+    "tag",
+    "rename",
+    "auto-rename-tag",
+    "nurohive"
+  ],
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "activationEvents": [
+    "onLanguage:html",
+    "onLanguage:xml",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact",
+    "onLanguage:vue",
+    "onLanguage:svelte"
+  ],
+  "main": "./out/extension.js",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/auroraund/ghosttag"
+  },
+  "bugs": {
+    "url": "https://github.com/auroraund/ghosttag/issues"
+  },
+  "homepage": "https://github.com/auroraund/ghosttag#readme"
+}
