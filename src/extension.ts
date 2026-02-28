@@ -41,11 +41,19 @@ export function activate(context: vscode.ExtensionContext) {
     // --- Tag Scanning ---
     // Extract all tags from the document to build a "Map" of the current structure.
     // Fixed: Now allows 0-character tag names to support empty tags like <>.
-    const tagRegex = /<(\/?)([a-zA-Z0-9\-]*)(?:\s+[^>]*?)?>/g;
+    const tagRegex = /<(\/?)([a-zA-Z0-9\-]*)(?:\s+[^>]*?)?(\/?)>/g;
     let tags: { name: string; isClose: boolean; offset: number }[] = [];
     let match;
     while ((match = tagRegex.exec(fullText)) !== null) {
-      tags.push({ name: match[2], isClose: !!match[1], offset: match.index });
+      const isClose = !!match[1]; // </... のとき true
+      const tagName = match[2];
+      const isSelfClose = !!match[3]; // .../> のとき true
+
+      // 自ら閉じているタグ（isSelfClose）は、スタックを増減させない。
+      // なので、地図（tags 配列）には含めないようにする。
+      if (!isSelfClose) {
+        tags.push({ name: tagName, isClose: isClose, offset: match.index });
+      }
     }
 
     const edits: { range: vscode.Range; newText: string }[] = [];
