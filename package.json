@@ -37,5 +37,8 @@
   "bugs": {
     "url": "https://github.com/auroraund/ghosttag/issues"
   },
-  "homepage": "https://github.com/auroraund/ghosttag#readme"
+  "homepage": "https://github.com/auroraund/ghosttag#readme",
+  "scripts": {
+    "watch": "tsc -w"
+  }
 }
