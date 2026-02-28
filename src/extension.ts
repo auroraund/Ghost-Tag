@@ -41,7 +41,7 @@ export function activate(context: vscode.ExtensionContext) {
     // --- Tag Scanning ---
     // Extract all tags from the document to build a "Map" of the current structure.
     // Fixed: Now allows 0-character tag names to support empty tags like <>.
-    const tagRegex = /<(\/?)([a-zA-Z0-9\-]*)>/g;
+    const tagRegex = /<(\/?)([a-zA-Z0-9\-]*)(?:\s+[^>]*?)?>/g;
     let tags: { name: string; isClose: boolean; offset: number }[] = [];
     let match;
     while ((match = tagRegex.exec(fullText)) !== null) {
@@ -57,7 +57,9 @@ export function activate(context: vscode.ExtensionContext) {
       const textUntilCursor = document.getText().slice(0, cursorOffset);
 
       // Determine if the user is typing inside a start tag <... or end tag </...
-      const startMatch = textUntilCursor.match(/<([a-zA-Z0-9\-]*)$/);
+      const startMatch = textUntilCursor.match(
+        /<([a-zA-Z0-9\-]*)(?:\s+[^>]*?)?$/,
+      );
       const endMatch = textUntilCursor.match(/<\/([a-zA-Z0-9\-]*)$/);
 
       const isForward = !!startMatch;
